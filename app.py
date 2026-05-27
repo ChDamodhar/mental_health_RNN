@@ -34,10 +34,11 @@ def load_artifacts():
         enc_path = os.path.join('models', enc_name)
         
     if not os.path.exists(model_path):
-        st.error(f"❌ Could not find model file: '{model_name}'. Please ensure it is uploaded to your project directory.")
+        st.error(f"❌ Could not find model file: '{model_name}'.")
         st.stop()
         
-    model = load_model(model_path)
+    # Standard modern loading pass
+    model = load_model(model_path, compile=False) 
     with open(tok_path, 'rb') as f:
         tokenizer = pickle.load(f)
     with open(enc_path, 'rb') as f:
