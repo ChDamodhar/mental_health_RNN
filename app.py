@@ -110,7 +110,7 @@ if submit_clicked:
         cleaned = re.sub(r'[^a-z\s]', '', cleaned)
         
         sequence = tokenizer.texts_to_sequences([cleaned])
-        padded = pad_sequences(sequence, maxlen=50, padding='post', truncating='post')
+        padded = pad_sequences(sequence, maxlen=100, padding='post', truncating='post')
         
         # Optimized Direct Call Pass (Prevents hanging/freezing on local machine)
         tensor_input = tf.convert_to_tensor(padded, dtype=tf.int32)
